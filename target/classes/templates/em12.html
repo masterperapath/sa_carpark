@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em12">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%" id="showstatus">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-12">
+							<h4>
+								<strong><i class="icon-eye"></i> จัดการข้อมูลกล่อง GPS
+									ตามกลุ่มผู้ใช้งาน(หลัก)</strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i>
+										ค้นหาข้อมูลกลุ่มผู้ใช้งาน </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSearchEm12"
+										class="btn btn-sm btn-primary form-control" onclick="search()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClear"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearval()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">รหัสกลุ่ม:</label>
+								<div class="col-sm-2">
+									<input type="text" id="companyid" maxlength="10"
+										name="companyid" class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="รหัสกลุ่ม" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+								<div class="col-sm-2">
+									<input type="text" id="company" maxlength="50" name="company"
+										class="form-control form-control-sm"
+										onkeypress='keyenter(event)' placeholder="ชื่อกลุ่ม" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">ชื่อผู้ใช้งาน:</label>
+								<div class="col-sm-2">
+									<input type="text" id="username" maxlength="50" name="username"
+										class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9a-zA-Z-]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="ชื่อผู้ใช้งาน" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">MID:</label>
+								<div class="col-sm-2">
+									<input type="text" id="midsearch" maxlength="10"
+										name="midsearch" class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="MID" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="bodyStatus">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-4">
+									<strong><i class="icon-eye"></i>
+										ข้อมูลกลุ่มผู้ใช้งาน(หลัก) </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">รหัสกลุ่ม</th>
+										<th style="text-align: center">ชื่อกลุ่ม</th>
+										<th style="text-align: center">ประเภทกลุ่ม</th>										
+										<th style="text-align: center">ชื่อผู้ใช้</th>
+										<th style="text-align: center; width: 120px;">จัดการ</th>
+									</tr>
+								</thead>
+								<tbody id="tableId">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="editbox">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong><i class="icon-eye"></i> แก้ไขข้อมูลกล่อง </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btBack"
+										class="btn btn-sm btn-warning form-control" onclick="back()">
+										<i class="fa fa-reply"></i>ย้อนกลับ
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmitUpdate"
+										class="btn btn-sm btn-success form-control"
+										onclick="updatebox()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClearfield"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearField()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="form-group row">
+										<label class="col-sm-1 col-form-label" for="input-small">MID:<font>*</font></label>
+										<div class="col-sm-5">
+											<input type="text" id="mid" maxlength="8" name="mid"
+												class="form-control form-control-sm"
+												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+												onkeypress='keyenterByMID(event);'
+												onblur="em12SearchByMID()" placeholder="MID" />
+										</div>
+										<label class="col-sm-1 col-form-label" for="input-small">ชื่อผู้ใช้งาน:<font>*</font></label>
+										<div class="col-sm-5">
+											<input type="text" id="usernamebymid" name="usernamebymid"
+												class="form-control form-control-sm"
+												onkeypress='keyenterByMID(event);'
+												onblur="em12SearchByMID()" placeholder="ชื่อผู้ใช้งาน" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">ชื่อเรียกรถ:<font>*</font></label>
+										<div class="col-sm-10">
+											<input type="text" id="carcode" maxlength="50" name="carcode"
+												class="form-control form-control-sm"
+												placeholder="ชื่อเรียกรถ" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">ทะเบียนรถ:<font>*</font></label>
+										<div class="col-sm-10">
+											<input type="text" id="platenumber" maxlength="50"
+												name="platenumber" class="form-control form-control-sm"
+												placeholder="ทะเบียนรถ" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">ประเภทรถ:<font>*</font></label>
+										<div class="col-sm-10">
+											<input type="text" id="cartype" maxlength="50" name="cartype"
+												class="form-control form-control-sm" placeholder="ประเภทรถ" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">รูปภาพ:</label>
+										<div class="col-sm-10">
+											<select class="form-control form-control-sm" id="showpic"
+												name="showpic" style="height: 28px; font-size: 13px;">
+												<option value="1">ไอคอนมาตรฐาน</option>
+												<option value="2">รถยนต์</option>
+												<option value="3">รถกะบะ</option>
+												<option value="4">รถบรรทุกน้ำมัน</option>
+												<option value="5">รถจักรยานยนต์</option>
+												<option value="6">รถไถ</option>
+												<option value="7">รถตู้</option>
+												<option value="8">รถบัส</option>
+												<option value="101">เรือ</option>
+												<option value="102">สปีดโบ๊ท</option>
+												<option value="103">เรือบรรทุก</option>
+												<option value="104">เรือใบ</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">วันที่ติดตั้ง:<font>*</font></label>
+										<div class="col-sm-7 form-group">
+											<input id="dtinstall" value="" readonly="true"
+												name="dtinstall" class="form-control form-control-sm"
+												style="height: 28px; background-color: #f7f70582"
+												onkeypress='keyenterByMID(event)' />
+										</div>
+										<div class="col-sm-3">
+											<button type="submit" id="clearBtnDateIns"
+												class="btn btn-sm btn-danger form-control"
+												onclick="clearBtnDateIns()">
+												<i class="fa fa-times-circle"></i>ล้างวันที่
+											</button>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">ผู้ติดตั้ง:</label>
+										<div class="col-sm-10">
+											<input type="text" id="technician" maxlength="10"
+												name="technician" class="form-control form-control-sm"
+												placeholder="ผู้ติดตั้ง" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">บันทึก(car):</label>
+										<div class="col-sm-10">
+											<textarea rows="4" id="carnote" maxlength="200"
+												name="carnote" style="resize: none"
+												class="form-control form-control-sm"
+												placeholder="บันทึก(car)">
+												</textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">บันทึก(box):</label>
+										<div class="col-sm-10">
+											<textarea rows="4" id="boxnote" maxlength="200"
+												name="boxnote" style="resize: none"
+												class="form-control form-control-sm"
+												placeholder="บันทึก(box)">
+												</textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em12.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

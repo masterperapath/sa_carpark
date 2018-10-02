@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body
+	class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+	<header th:include="menuheader :: header"></header>
+	<div class="app-body">
+		<div th:include="menuleft :: sidebar"></div>
+		<main class="main">
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+				<div class="row" style="margin-top: 1%">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-4">
+								<h5>
+									<strong><i class="icon-eye"></i>
+										จัดการข้อมูลบัญชีผู้ใช้</strong>
+								</h5>
+							</div>
+						</div>
+						<div class="card">
+							<div class="row">
+								<div id="carouselExampleControls" class="carousel slide"
+									data-ride="carousel">
+									<div class="carousel-inner">
+										<div class="carousel-item active">
+											<img class="d-block w-100"
+												src="src/main/resurces/static/img/logo.png"
+												alt="First slide" width="500px" height="500px"></img>
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-100"
+												src="src/main/resurces/static/img/logo.png"
+												alt="Second slide" width="500px" height="500px"></img>
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-100"
+												src="src/main/resurces/static/img/logo.png"
+												alt="Third slide" width="500px" height="500px"></img>
+										</div>
+									</div>
+									<a class="carousel-control-prev"
+										href="#carouselExampleControls" role="button"
+										data-slide="prev"> <span
+										class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="sr-only">Previous</span>
+									</a> <a class="carousel-control-next"
+										href="#carouselExampleControls" role="button"
+										data-slide="next"> <span
+										class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</main>
+		<div th:include="modalalert :: alert"></div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/eyeftleethompage.js}" />
+<script type="text/javascript" th:src="@{/js/menuleft.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

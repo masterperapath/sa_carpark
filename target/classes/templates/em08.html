@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em08">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4>
+								<strong><i class="icon-eye"></i> คำสั่งจัดการกล่อง </strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i> ค้นหา </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-primary form-control" onclick="search()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSave"
+										class="btn btn-sm btn-success form-control" onclick="save()">
+										<i class="fa fa-plus-circle"></i> ส่ง
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="mid" maxlength="8" name="mid"
+										class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="MID" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">คำสั่ง
+									:</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="command">
+										<option value="0">ส่งคำสั่งรูดบัตร</option>
+										<option value="1">clear cache sms</option>
+										<option value="2">clear cache gprs</option>
+										<option value="3">clear sms
+											ข้อมูลของกล่องที่ส่งข้อมูลย้อนหลัง</option>
+										<option value="4">clear gprs
+											ข้อมูลของกล่องที่ส่งข้อมูลย้อนหลัง</option>
+										<option value="5">clear sms and gprs
+											ข้อมูลของกล่องที่ส่งข้อมูลย้อนหลัง</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">MID</th>
+										<th style="text-align: center">คำสั่ง</th>
+										<th style="text-align: center">สถานะ</th>
+										<th style="text-align: center">วันที่ส่งคำสั่ง</th>
+									</tr>
+								</thead>
+								<tbody id="tableId">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em08.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

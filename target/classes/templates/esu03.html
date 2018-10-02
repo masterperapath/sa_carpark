@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="esu03">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h3>
+								<strong><i class="icon-eye"></i> บัญชีผู้ใช้
+									ลืมรหัสผ่าน </strong>
+							</h3>
+						</div>
+					</div>
+					<div class="row" id="search">
+						<div class="col-lg-12">
+							<div class="card" id="select">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-sm-8">
+											<strong><i class="icon-eye"></i> บัญชีผู้ใช้
+												ลืมรหัสผ่าน </strong>
+										</div>
+										<div class="col-sm-2">
+											<button type="submit" id="btSearchEsu03"
+												class="btn btn-sm btn-primary form-control"
+												onclick="searchEsu03()">
+												<i class="fa fa-search"></i>ค้นหา
+											</button>
+										</div>
+										<div class="col-sm-2">
+											<button type="submit" id="btClearSelectEsu03"
+												class="btn btn-sm btn-danger form-control"
+												onclick="clearSelectEsu03()">
+												<i class="fa fa-times-circle"></i> ล้างข้อมูล
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="form-group row">
+										<label class="col-sm-1 col-form-label" for="input-small">รหัสกลุ่ม:</label>
+										<div class="col-sm-3">
+											<input type="text" id="groupid" name="groupid" maxlength="10"
+												class="form-control form-control-sm" placeholder="รหัสกลุ่ม"
+												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+												onkeypress='keyenterselect(event)' />
+										</div>
+										<label class="col-sm-1 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+										<div class="col-sm-3">
+											<input type="text" id="groupname" name="groupname"
+												maxlength="50" class="form-control form-control-sm"
+												placeholder="ชื่อกลุ่ม" onkeypress='keyenterselect(event)' />
+										</div>
+										<label class="col-sm-1 col-form-label" for="input-small">ชื่อผู้ใช้:</label>
+										<div class="col-sm-3">
+											<input type="text" id="username" name="username"
+												maxlength="10" class="form-control form-control-sm"
+												placeholder="ชื่อผู้ใช้งาน" onkeypress='keyenterselect(event)' />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="card" id="selectColumn">
+										<div class="card-header">
+											<div class="row">
+												<div class="col-sm-12">
+													<strong><i class="icon-eye"></i> ข้อมูลผู้ใช้ </strong>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div class="row">
+												<table
+													class="table table-responsive-sm table-bordered table-striped table-sm">
+													<thead>
+														<tr>
+															<th style="text-align: center">No.</th>
+															<th style="text-align: center">ชื่อผู้ใช้</th>
+															<th style="text-align: center">ชื่อกลุ่ม</th>
+															<th style="text-align: center">หมายเหตุ</th>
+															<th style="text-align: center" width="120">จัดการ</th>
+														</tr>
+													</thead>
+													<tbody id="table">
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card" id="forgotpassword">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-sm-6">
+											<strong><i class="icon-eye"></i> บัญชีผู้ใช้
+												ลืมรหัสผ่าน </strong>
+										</div>
+										<div class="col-sm-2">
+											<button type="submit" id="btBackEsu03"
+												class="btn btn-sm btn-warning form-control"
+												onclick="backEsu03()">
+												<i class="fa fa-reply"></i>ย้อนกลับ
+											</button>
+										</div>
+										<div class="col-sm-2">
+											<button type="submit" id="btSendEmailEsu03"
+												class="btn btn-sm btn-success form-control"
+												onclick="sendEmailEsu03()">
+												<i class="fa fa-envelope-open-o"></i> ส่ง
+											</button>
+										</div>
+										<div class="col-sm-2">
+											<button type="submit" id="btClearEsu03"
+												class="btn btn-sm btn-danger form-control"
+												onclick="clearEsu03()">
+												<i class="fa fa-times-circle"></i> ล้างข้อมูล
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="card-body">
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="input-small"
+													style="text-align: right">ชื่อผู้ใช้: </label>
+												<div class="col-sm-5">
+													<input type="text" id="userName" name="userName"
+														style="text-align: left"
+														class="form-control form-control-sm"
+														placeholder="ชื่อผู้ใช้งาน" onkeypress='keyenter(event)' />
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="input-small"
+													style="text-align: right">Email: </label>
+												<div class="col-sm-5">
+													<input type="text" id="emailUser" name="emailUser"
+														style="text-align: left"
+														class="form-control form-control-sm"
+														placeholder="Email ผู้ใช้"
+														onkeypress='keyentersend(event)' />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/esu03.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

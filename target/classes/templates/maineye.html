@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="page :: head">
+	<meta charset="utf-8" />
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden" id="sidebar">
+	<header class="app-header navbar">
+
+		<ul class="nav navbar-nav mr-auto">
+			<button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" onclick="sidebarToggleMobile(sidebar)" type="button">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" onclick="eyeminmonitor()" href=""></a>
+		</ul>
+		<ul class="nav navbar-nav ml-auto" style="margin-right:  3%;">
+			<a class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+				 onclick="showToggle(dropdown)"><i class="fa fa-user fa-fw"></i></a>
+				<div class="dropdown-menu dropdown-menu-right" id="dropdown">
+					<div class="dropdown-header text-center">
+						<strong>Account</strong>
+					</div>
+					<a class="dropdown-item" href="#">
+						<div id="labelUsername"></div>
+					</a>
+					<a class="dropdown-item fa fa-user-circle-o" id="headername" href="#">
+						<div id="labelHeadername"></div>
+					</a>
+					<div class="dropdown-header text-center">
+						<strong>Settings</strong>
+					</div>
+					<a class="dropdown-item" href="#" onclick="logout()">
+						<label class="fa fa-sign-out" onclick="logout()"></label> Logout</a>
+				</div>
+			</a>
+		</ul>
+	</header>
+	<div class="app-body">
+		<div class="sidebar">
+			<nav class="sidebar-nav" id="sidebarId">
+				<ul class="nav">
+					<li class="nav-title" style="background-color: #33444c">Eyemin Menu</li>
+					<div id="menuleft"></div>
+				</ul>
+			</nav>
+			<button class="sidebar-minimizer brand-minimizer" type="button" onclick="sidebarToggle(sidebar)"></button>
+		</div>
+		<main class="main">
+			<div id="maineye">
+
+			</div>
+		</main>
+		<div th:include="modalalert :: alert"></div>
+
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/maineye.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+<script type="text/javascript" th:src="@{/js/lodash.min.js}"></script>
+</html>

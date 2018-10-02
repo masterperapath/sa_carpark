@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+				<div class="row" style="margin-top: 5%">
+					<div class="col-lg-9">
+						<div class="card text-danger border-danger bg-dark" style="margin-left: 35%;">
+							<div class="card-body text-center">
+								<br />
+								<h2 class="card-title"><i class="fa fa-ban" style="font-size:52px;color:indianred;"></i> Forbidden / หวงห้าม</h2>
+								<br />
+								<h5>คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้</h5>
+								<br />
+								<h5>You don't have promises to access this page.</h5>
+								<br /> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/forbidden.js}" />
+</html>

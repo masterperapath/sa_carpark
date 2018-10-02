@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em22">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4>
+								<strong><i class="icon-eye"></i> คำสั่งจัดการกล่อง </strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="showSearch">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong><i class="icon-eye"></i> ค้นหา </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClear"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearval()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-primary form-control" onclick="search()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="addMoveEm22"
+										class="btn btn-sm btn-warning form-control"
+										onclick="addMoveEm22()">
+										<i class="fa fa-circle-o"></i> เพิ่ม
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-header" id="showheaderAdd">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i> เพิ่มคำสั่ง </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btBack"
+										class="btn btn-sm btn-warning form-control" onclick="back()">
+										<i class="fa fa-reply"></i>ย้อนกลับ
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSaveEm22"
+										class="btn btn-sm btn-success form-control"
+										onclick="saveEm22()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body" id="showBodySearch">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="midSearch" maxlength="8"
+										name="midSearch" class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)'
+										placeholder="MID" />
+								</div>
+							</div>
+						</div>
+						<div class="card-body" id="showBodyAdd">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="midAdd" maxlength="8" name="midAdd"
+										class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenterAdd(event);'
+										placeholder="MID" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">คำสั่ง
+									:</label>
+								<div class="col-sm-6">
+									<input type="text" id="commandAdd" name="commandAdd"
+										class="form-control form-control-sm"
+										onkeypress='keyenterAdd(event)' placeholder="ชุดคำสั่ง" />
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btAdd"
+										class="btn btn-sm btn-primary form-control"
+										onclick="addEm22()">
+										<i class="fa fa-plus-circle"></i> เพิ่ม
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card" id="showTableSearch">
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">MID</th>
+										<th style="text-align: center">คำสั่ง</th>
+										<th style="text-align: center">สถานะ</th>
+										<th style="text-align: center">วันที่ส่งคำสั่ง</th>
+									</tr>
+								</thead>
+								<tbody id="tableIdSearch">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card" id="showTableAdd">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i> เพิ่มคำสั่ง </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center; width: 130px;">No.</th>
+										<th style="text-align: center">MID</th>
+										<th style="text-align: center">คำสั่ง</th>
+										<th style="text-align: center; width: 130px;">ลบคำสั่ง</th>
+									</tr>
+								</thead>
+								<tbody id="tableIdAdd">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em22.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

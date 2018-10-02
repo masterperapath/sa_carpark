@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div th:fragment="alert">
+		<div class="alert">
+			<div class="modal fade" id="dangerModallogin" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก Username หรือ Password</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="midDupModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่มี MID นี้ในระบบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="loginFailModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Username หรือ Password ไม่ถูกต้อง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="emailTryAgain" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก email ให้ถูกต้อง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="matchTryAgain" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรอกได้เฉพาะ a-z, A-Z, 0-9 และ _ (underscore)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="numberModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรอกได้เฉพาะตัวเลข</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="statSpeedModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก ความเร็ว และความเร็วต้องไม่เท่ากับ 0 และ Pincode
+								ต้องมากกว่าหรือเท่ากับ -1</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="statSpeedModalem17" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอกแรงดันไฟ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="updateSuccess" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-success" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">สำเร็จ</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>บันทึกสำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="updateError" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>แก้ไขล้มเหลว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dateModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>วันที่สิ้นสุดต้องมากกว่าหรือเท่ากับวันที่เริ่มต้น</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerModalMID" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID และ วันที่ เริ่มต้น - จบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerModalBox" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID และ IMEI</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="setUpBoxModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="groupUserModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก ชื่อกลุ่ม หรือ ชื่อผู้ใช้</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="groupModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก ชื่อกลุ่มหรือรหัสกลุ่ม</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userNameLength" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก บัญชีผู้ใช้ ให้มากกว่า 6 ตัว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="passwordLength" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก รหัสผ่าน ให้มากกว่า 6 ตัว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="passwordFailModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอกรหัสผ่านให้ตรงกัน</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerData" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอกข้อมูลให้ครบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dataSearchFail" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอกข้อมูลอย่างน้อย 1 ช่อง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerDataUsername" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Username ต้องมากกว่า 4 ตัวอักษร</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userDup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>User name ซ้ำ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="minlength" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก Username หรือ Password ให้มากกว่า3ตัวอักษร</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerRequireUnitId" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณาระบุหมายเลขเครื่อง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="errorAlertModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p></p>
+							<p>กรุณา เลือกคำสั่ง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userDup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>User name ซ้ำ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="usernameDup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ชื่อบัญชี ซ้ำ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="minlength" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก Username หรือ Password ให้มากกว่า3ตัวอักษร</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerDuplicateMID" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>MID ซ้ำ กรุณากรอกใหม่</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="errorAlertModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="em12Modal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID และ วันที่ติดตั้ง ชื่อเรียกรถ ทะเบียนรถ
+								ประเภทรถ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userroleModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก บัญชีผู้ใช้ หรือ เลือกแผนก</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userDup" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>User name ซ้ำ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="minlength" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก Username หรือ Password ให้มากกว่า3ตัวอักษร</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerDuplicateMIDEm09" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>MID หรือ IMEI ซ้ำ กรุณากรอกใหม่</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dangerDuplicateCommandEm22" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>คำสั่งซ้ำ กรุณากรอกใหม่</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="errorAlertModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="middtinstall" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก MID และ วันที่ติดตั้ง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="deleteSuccess" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-success" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">สำเร็จ</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ลบข้อมูลกลุ่มย่อย สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="deleteError" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ลบข้อมูลกลุ่มย่อย ล้มเหลว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedMassage" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">คุณต้องการบันทึกใช่หรือไม่</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true" onclick="btNotConfirmMassage()"><i
+									class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirm"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="updateStatus()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close" id="btNotConfirmMassage"
+										onclick="btNotConfirmMassage()">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedPayment" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">คุณต้องการบันทึกใช่หรือไม่</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true" onclick="btNotConfirm()"><i
+									class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirm"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="updateStatus()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close" id="btNotConfirm"
+										onclick="btNotConfirm()">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedSuspend" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">คุณต้องการระงับบัญชีผู้ใช้ใช่หรือไม่</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true" onclick="btNotConfirmSuspend()"><i
+									class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirm"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="updateStatus()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close"
+										id="btNotConfirmSuspend" onclick="btNotConfirmSuspend()">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedPaymentRecord"
+				tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ยกเลิก</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label" for="input-small">วันเริ่ม:</label>
+										<div class="col-sm-4">
+											<input value="" id="startDate" readonly="true"
+												name="startDate" style="background-color: #f7f70582"
+												class="form-control form-control-sm" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirmRecord"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="updatedetial()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedDelSubgroup"
+				tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ลบข้อมูลกลุ่มย่อย</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<div class="form-group row">
+										<label class="col-sm-12 col-form-label" for="input-small">ยืนยันที่จะลบข้อมูล
+											กลุ่มย่อย หรือไม่ ?</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirmRecord"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="delEm13()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dataNotFound" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่พบข้อมูล</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="midNotFound" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่พบ MID นี้ในระบบ กรุณากรอก MID ใหม่</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="dataSuccessEm14" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ส่งข้อมูลเข้ากรมขนส่งเรียบร้อย</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dataFailEm14" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่มีข้อมูลใหม่เข้ากรมขนส่ง</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="deleteSuccessEm14" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ลบข้อมูลจากกรมขนส่งเรียบร้อย</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="deleteFailEm14" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่พบข้อมูลที่ต้องการจะลบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="failEm14" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>โปรแกรมผิดพลาด กรุณาติต่อผู้ดูแลระบบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="useremailModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก ชื่อผู้ใช้ และ Email</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="userModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก ชื่อผู้ใช้</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="sendEmailSuccess" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-success" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">สำเร็จ</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Email ถูกส่งแล้ว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="emailModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอก Email</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="emailErrorModal" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ส่ง Email ไม่สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="deleteSuccessEm07" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ลบข้อมูลบัญชีผู้ใช้สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="deleteErrorEm07" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ลบข้อมูลบัญชีผู้ใช้ไม่สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="reloadErrorEm23" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ผิดพลาด</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>reload config ไม่สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="reloadSuccessEm23" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-success" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">สำเร็จ</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>reload config สำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="updatePasswordSuccess" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-success" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">สำเร็จ</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>เปลี่ยนรหัสผ่านสำเร็จ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="updatePasswordFail" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-danger" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ล้มเหลว</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>เปลั่ยนรหัสผ่านล้นเหลว</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="dangerModalCheckedDelUserAdmin"
+				tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">ลบข้อมูลผู้ใช้</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+
+						<div class="modal-body">
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<div class="form-group row">
+										<label class="col-sm-12 col-form-label" for="input-small">ยืนยันที่จะลบข้อมูล
+											ผู้ใช้ หรือไม่ ?</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-8"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btConfirmRecord"
+										class="btn btn-sm btn-success form-control"
+										data-dismiss="modal" onclick="deleteUserEm07()">
+										<i class="fa fa-check"></i>ใช่
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="button"
+										class="btn btn-sm btn-danger form-control"
+										data-dismiss="modal" aria-label="Close">
+										<i class="fa fa-times-circle"></i> <span aria-hidden="true">ไม่</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="commandB99" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณาตั้งค่าหมายเลขโทรศัพท์ก่อน </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="checkLength" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>กรุณากรอกรหัสผ่านมากกว่า 3 ตัวอักษร </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="midDupContactModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-warning" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">แจ้งเตือน</h4>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true"><i class="fa fa-times"></i></span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>ไม่มี MID นี้ในระบบ กรุณาติดต่อผู้ดูแลระบบ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<!-- <script type="text/javascript" th:src="@{/js/modalalert.js}" /> -->
+</html>

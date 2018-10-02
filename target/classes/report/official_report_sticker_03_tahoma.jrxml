@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stic" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="40e3063e-4b77-4756-a07d-d1b3e71f14db">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pathImg" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+  char1 AS "CHAR1"
+, char2 AS "CHAR2"
+, char3 AS "CHAR3"
+, char4 AS "CHAR4"
+, char5 AS "CHAR5"
+, char6 AS "CHAR6"
+, char7 AS "CHAR7"
+, char8 AS "CHAR8"
+, date1 AS "DATE1"
+, date2 AS "DATE2"
+from audit.em06_Report_New_car($P{mid})]]>
+	</queryString>
+	<field name="CHAR1" class="java.lang.String"/>
+	<field name="CHAR2" class="java.lang.String"/>
+	<field name="CHAR3" class="java.lang.String"/>
+	<field name="CHAR4" class="java.lang.String"/>
+	<field name="CHAR5" class="java.lang.String"/>
+	<field name="CHAR6" class="java.lang.String"/>
+	<field name="CHAR7" class="java.lang.String"/>
+	<field name="CHAR8" class="java.lang.String"/>
+	<field name="DATE1" class="java.sql.Timestamp"/>
+	<field name="DATE2" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="154" splitType="Stretch">
+			<frame>
+				<reportElement x="62" y="0" width="84" height="63" uuid="2c1d2b45-9d2f-4af5-aea8-285cb55cbb86"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<image>
+					<reportElement x="13" y="4" width="69" height="53" uuid="957b1fe5-4a77-437a-af48-3d1d685cffdd"/>
+					<imageExpression><![CDATA[$P{pathImg}+"/report/Capture14.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement x="62" y="63" width="84" height="82" uuid="03699b92-6197-476d-8c29-2d401a1bc152"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<image>
+					<reportElement x="6" y="3" width="72" height="75" uuid="c70219ab-3b2d-4731-9b57-74a8d229a46d"/>
+					<imageExpression><![CDATA[$P{pathImg}+"/report/Capture8.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement x="146" y="0" width="316" height="145" uuid="63ef9a49-3f47-4c53-affe-ad98e694ad80"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<staticText>
+					<reportElement x="7" y="23" width="84" height="20" uuid="fab4b22c-59f2-4741-a33b-e2add1cb54ca"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[ชนิด   FAHPAH]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="7" y="3" width="268" height="20" uuid="6c4af0c7-046f-4285-9656-0e30a04a0fee"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[ได้รับการรับรองจากกรมการขนส่งทางบก เลขที่    058/2559]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="7" y="43" width="69" height="20" uuid="cb550c55-efc4-487c-b592-58662398c67f"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[หมายเลขเครื่อง]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="7" y="63" width="69" height="20" uuid="55234a44-8fd7-4c36-9910-8dfc28784f68"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[เลขทะเบียนรถ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="7" y="83" width="69" height="20" uuid="59ef0656-83bb-40ba-a062-79899ca86968"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[หมายเลขคัสซี]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="6" y="103" width="229" height="20" uuid="cc04ef45-bada-4679-bf6d-52a9c60ea2f4"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[ผู้ให้บริการระบบติดตามรถ บริษัท อีสท์อินโนเวชั่น จำกัด]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="6" y="123" width="49" height="20" uuid="4f8d60ab-a83e-4c27-82a2-66dc5edc6f46"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[วันที่ติดตั้ง]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="176" y="63" width="34" height="20" uuid="84f2225f-066f-4dc9-b265-beed5e6444ca"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[จังหวัด]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="91" y="23" width="99" height="20" uuid="d6e46d20-2bf4-43a0-81f7-a70bc8a73820"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[แบบ   Max3U20]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="76" y="43" width="100" height="20" uuid="5019b398-7620-4759-a4d2-c228376a4862"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CHAR1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="76" y="63" width="80" height="20" uuid="fb192ef4-d125-4cd3-a29e-da91ed0072aa"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CHAR5}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="76" y="83" width="234" height="20" uuid="f4c1d13d-c317-4b60-8fb2-8a8a3094903f"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CHAR8}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="56" y="123" width="100" height="20" uuid="5ccaa21b-6513-415b-8906-d6936f417c4e"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yy", new Locale("TH","th")).format($F{DATE1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="210" y="63" width="100" height="20" uuid="eedc7eaf-c201-4403-871f-e4dbeee00254"/>
+					<textElement>
+						<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CHAR3}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+</jasperReport>

@@ -1,0 +1,1 @@
+INSERT INTO parameter_header VALUES(1, 'รายการคำสั่งของMeitrack series box', 'รายการคำสั่งของMeitrack series box', now(), 'ss-admin', now(), 'ss-admin');								
