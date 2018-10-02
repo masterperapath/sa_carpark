@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: eyemin
+Implementation-Version: 1.0.0
+Built-By: MasterPerapath
+Implementation-Vendor-Id: com.ss.eyemin
+Build-Jdk: 1.8.0_181
+Implementation-URL: http://projects.spring.io/spring-boot/eyemin/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

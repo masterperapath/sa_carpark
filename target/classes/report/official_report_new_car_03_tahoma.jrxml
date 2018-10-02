@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="official_report_new_car_03_tahoma" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="491" leftMargin="52" rightMargin="52" topMargin="32" bottomMargin="32" isIgnorePagination="true" uuid="de8c10d5-e172-4c00-9021-551de61092cd">
+	<property name="ireport.zoom" value="1.3660269107301426"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="554"/>
+	<subDataset name="dataset1" uuid="a4b6510b-d4ae-4d64-8f85-1a6adbcf0ac4"/>
+	<parameter name="mid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{mid}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pathImg" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+  char1 AS "CHAR1"
+, char2 AS "CHAR2"
+, char3 AS "CHAR3"
+, char4 AS "CHAR4"
+, char5 AS "CHAR5"
+, char6 AS "CHAR6"
+, char7 AS "CHAR7"
+, char8 AS "CHAR8"
+, date1 AS "DATE1"
+, date2 AS "DATE2"
+from audit.em06_Report_New_car($P{mid})]]>
+	</queryString>
+	<field name="CHAR1" class="java.lang.String"/>
+	<field name="CHAR2" class="java.lang.String"/>
+	<field name="CHAR3" class="java.lang.String"/>
+	<field name="CHAR4" class="java.lang.String"/>
+	<field name="CHAR5" class="java.lang.String"/>
+	<field name="CHAR6" class="java.lang.String"/>
+	<field name="CHAR7" class="java.lang.String"/>
+	<field name="CHAR8" class="java.lang.String"/>
+	<field name="DATE1" class="java.sql.Timestamp"/>
+	<field name="DATE2" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="197">
+			<staticText>
+				<reportElement x="229" y="4" width="262" height="18" uuid="f993fdbf-df32-4740-83c3-e9a30c68b567"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[บริษัท อีสท์อินโนเวชั่น จำกัด  East Innovation Co.,Ltd.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="38" width="233" height="16" uuid="9d48c991-a779-457b-a697-d7e78cbca17e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[โทร 02-052-4466 แฟกซ์ 02-322-3926 www.eastinnovation.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="22" width="233" height="16" uuid="6833dd01-cdb4-489b-9a18-3d3a389d147e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[6 ซอยอ่อนนุช 74/1 แยก 1 แขวงประเวศ เขตประเวศ กรุงเทพฯ 10250]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="1" width="186" height="52" uuid="1f7f68b6-2a69-4fc3-8c58-331826aa0763"/>
+				<imageExpression><![CDATA[$P{pathImg}+"/report/Capture4.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="2" y="74" width="489" height="21" uuid="f18bef80-7e47-4aef-bb25-a365c257e350"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[หนังสือรับรองการติดตั้งเครื่องบันทึกข้อมูลการเดินรถ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="134" width="446" height="21" uuid="8d0fddb6-f29a-4f17-bff3-e32607f3eafd"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[บริษัท อีสท์อินโนเวชั่น จำกัด ที่อยู่ 6 ซอยอ่อนนุช 74/1 แยก 1 แขวงประเวศ เขตประเวศ กรุงเทพมหานคร]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="58" y="114" width="100" height="20" uuid="dd236755-9eb7-4104-9adc-415d9825b1bf"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("yy", new Locale("TH","th")).format(new Date())+"/"+
+$F{CHAR6}.substring(5,7)+"-"+$F{CHAR7}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="114" width="56" height="20" uuid="da4c9894-977b-4cfb-9111-0b6961417d76"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เลขที่หนังสือ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="155" width="489" height="20" uuid="8b505a3a-c7b5-4bef-a5ce-a489e53c2200"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[10250 โทรศัพท์ 02-052-4466 โทรสาร 02-322-3926 ได้ติดตั้งเครื่องบันทึกข้อมูลการเดินทางของรถ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="175" width="489" height="20" uuid="79eb8152-af78-4186-b32c-ef89f478a95a"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รายละเอียดดังนี้]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="231">
+			<staticText>
+				<reportElement x="45" y="112" width="159" height="20" uuid="99dc91be-5c46-416a-8bcb-099c72538041"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ชื่อผู้ประกอบการขนส่ง/เจ้าของรถ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="258" y="152" width="224" height="20" uuid="e61c9e2b-fee9-4167-8b37-a136f0b16671"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="45" y="92" width="59" height="20" uuid="276a0739-4574-41c9-9973-0168efe5535c"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วันที่ติดตั้ง]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="104" y="92" width="378" height="20" uuid="52444df8-6d19-4fbd-8273-a0e1c902cf30"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yy", new Locale("TH","th")).format($F{DATE1})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="45" y="72" width="267" height="20" uuid="aa58ebfd-3440-4a1d-9433-391b979ab783"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เครื่องอ่านบัตรแถบแม่เหล็ก ชนิด   Fah Pah Electronics]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="32" width="88" height="20" uuid="69bd319f-fe2a-419c-b468-46200e5fa37e"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[แบบ   Max3U20]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="32" width="141" height="20" uuid="3c4b82a0-7cab-459f-b803-c5fc9a2b50c8"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ชนิด   FAHPAH]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="152" width="100" height="20" uuid="5a81674a-3ce5-43c4-ac50-538eafa1d138"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="112" width="273" height="20" uuid="1ec0537f-0531-47cd-80c3-8d64ed85a733"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="192" width="48" height="20" uuid="0853c256-8959-4003-92a0-be25f43f79c4"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[หมายเหตุ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="152" width="40" height="20" uuid="23e26f60-42df-4b02-96fb-f8c6cd411666"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จังหวัด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="132" width="30" height="20" uuid="b3aab8d3-e294-414a-984f-b7e839ba5dfa"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ยี่ห้อ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="172" width="364" height="20" uuid="7a18fe9a-a6a5-4020-9d1f-f32c4ab3fa1a"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="132" width="407" height="20" uuid="8fa8ff44-931b-42c9-9fcf-798763f4addc"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="45" y="172" width="73" height="20" uuid="efdc755d-966b-4c6f-8014-b94b377dda0d"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[หมายเลขคัสซี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="152" width="73" height="20" uuid="2eea3ab2-c82a-4a3b-b7e4-b4f278013f95"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เลขทะเบียนรถ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="52" width="73" height="20" uuid="06af25a5-582c-4757-b518-a0a7e9c4e39a"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[หมายเลขเครื่อง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="72" width="83" height="20" uuid="8ac79715-2e64-48ee-8d7e-ac74e0fa885b"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[แบบ   MagCard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="192" width="366" height="20" uuid="6b4bb2d2-d0aa-41ab-86dd-b1105a7405d3"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[................................................................................................................................................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="52" width="364" height="20" uuid="2af15d4a-b2db-4b2b-8036-6ac6011caa7a"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHAR1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="12" width="300" height="20" uuid="09c0f453-536f-45e4-aee3-48d5987bbf3c"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[การรับรองจากกรมการขนส่งทางบก เลขที่   058/2559]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="284">
+			<staticText>
+				<reportElement x="45" y="0" width="446" height="20" uuid="6a3218aa-6e61-4363-bc3c-19625e038e15"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ขอรับรองว่าเครื่องบันทึกข้อมูลการเดินทางของรถดังกล่าวข้างต้นมีคุณลักษณะและระบบการทำงานที่ได้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="20" width="489" height="20" uuid="b0ad8750-ac8b-4296-8af5-9ae6ac3f96a6"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รับการรับรองจากกรมการขนส่งทางบก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="40" width="446" height="20" uuid="5c901bb1-7637-47b7-b2ea-bb18fb927c8f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[กรณีเครื่องบันทึกข้อมูลการเดินทางของรถมีคุณลักษณะหรือระบบการทำงานไม่เป็นไปตามที่กรมการขนส่ง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="60" width="489" height="20" uuid="4af52761-22f1-40a5-9877-51f7c34d1c30"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ทางบกได้ให้การรับรอง หรือมีรายงานข้อมูลไม่ตรงกับข้อเท็จจริงหรือไม่สามารถรายงานข้อมูลได้ตามที่กรมการขนส่ง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="80" width="489" height="20" uuid="1b565708-228c-4472-a267-3a42aa8882ce"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ทางบกกำหนด บริษัท อีสท์อินโนเวชั่น จำกัด ยินยอมรับผิดชอบต่อความเสียหาย ทั้งหมดที่เกิดขึ้นต่อเจ้าของรถหรือ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="100" width="489" height="20" uuid="8c48f25e-eeee-4aee-81d0-c8024a392e15"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้ประกอบการขนส่งที่ได้ซื้อหรือใช้บริการเครื่องบันทึกข้อมูลการเดินทางของรถ ดังกล่าวทุกประการ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="120" width="73" height="20" uuid="3cf5cca3-0b06-4cd6-b013-431a9c6ecb4b"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ออกให้ ณ วันที่]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="120" width="356" height="20" uuid="fc4c80a3-a0bc-4a56-a784-e6b692564139"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" isBold="false" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("d MMMM yyyy", new Locale("TH","th")).format($F{DATE2})]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="24" y="200" width="216" height="50" uuid="fa60af97-f2e9-4ea8-a542-62d165e6ed33"/>
+				<imageExpression><![CDATA[$P{pathImg}+"/report/Capture.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="273" y="195" width="209" height="20" uuid="31680c04-a32c-4b06-833f-62aad179cb3b"/>
+				<textElement>
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ……………………………………………………………………....]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="215" width="209" height="20" uuid="14a28fd3-11d0-49d6-ace2-2337ae6363ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[(นางสาวบุษราคัม คงจินดา)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="235" width="209" height="20" uuid="b18d5e2b-beec-4b18-b13c-ecfb9b6ff1ad"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" pdfFontName="tahoma.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้จัดการทั่วไป]]></text>
+			</staticText>
+			<image>
+				<reportElement x="312" y="123" width="113" height="79" uuid="df6bf8a2-40e7-4746-9183-9bccf62cb642"/>
+				<imageExpression><![CDATA[$P{pathImg}+"/report/Capture1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

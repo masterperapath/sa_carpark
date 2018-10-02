@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em06">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-12">
+							<h4>
+								<strong><i class="icon-eye"></i>
+									การจัดการข้อมูลเข้าขนส่ง </strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-6 col-md-7 col-lg-8">
+									<strong><i class="icon-eye"></i> ค้นหา </strong>
+								</div>
+								<div class="col-sm-1 col-md-1col-lg-1" id="dlt_DltRegisfn4"></div>
+								<div class="col-sm-1 col-md-1 col-lg-1" id="dlt_DltRegisfn5"></div>
+								<div class="col-sm-4 col-md-3 col-lg-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-primary form-control" onclick="search()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-2 col-md-2 col-lg-1 col-form-label"
+									for="input-small">MID:</label>
+								<div class="col-sm-3 col-md-3 col-lg-2">
+									<input type="text" id="mid" name="mid" class="form-control"
+										placeholder="MID"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' maxlength="8"
+										style="width: 210px" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">รหัส<font>*</font> :
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="carcode" name="carcode"
+										class="form-control" style="text-align: left; width: 150px"
+										maxlength="50" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">วันที่ติดตั้ง :</label>
+								<div class="col-sm-2">
+									<input type="text" id="dtinstall" name="dtinstall"
+										style="width: 150px" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ทะเบียนรถ :</label>
+								<div class="col-sm-2">
+									<input type="text" id="userplatenumber" name="userplatenumber"
+										class="form-control" style="text-align: left; width: 150px"
+										maxlength="7" />
+								</div>
+								<div class="col-sm-5"></div>
+								<div class="col-sm-5"></div>
+								<label class="col-sm-5 col-form-label" for="input-small">*ทะเบียนเว้นว่างกรณีสำหรับรถไม่มีทะเบียน</label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-md-5 col-lg-5 col-form-label"
+									for="input-small" style="text-align: right">จังหวัดที่จดทะเบียนรถ
+									:</label>
+								<div class="col-sm-5 col-md-4 col-lg-3">
+									<select class="form-control" id="province">
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ยี่ห้อรถ<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="brand" name="brand"
+										oninput="this.value = this.value.replace(/[^A-Z ]/g, '').replace(/(\..*)\./g, '$1')"
+										class="form-control" style="text-align: left; width: 240px"
+										maxlength="20" />
+								</div>
+								<div class="col-sm-5"></div>
+								<label class="col-sm-5 col-form-label" for="input-small">*ยี่ห้อรถต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์ใหญ่เท่านั้น</label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">หมายเลขคัสซี<font>*</font> :
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="uservin" name="uservin"
+										oninput="this.value = this.value.replace(/[^0-9A-Z]/g, '').replace(/(\..*)\./g, '$1')"
+										class="form-control" style="text-align: left; width: 240px"
+										maxlength="30" />
+								</div>
+								<div class="col-sm-5"></div>
+								<div class="col-sm-5"></div>
+								<label class="col-sm-5 col-form-label" for="input-small">*หมายเลขคัสซีต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์ใหญ่และตัวเลขเท่านั้น</label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ผู้ประกอบการ/ชื่อเจ้าของรถ :</label>
+								<div class="col-sm-3">
+									<input type="text" id="ownername" name="ownername"
+										class="form-control" style="text-align: left; width: 240px"
+										maxlength="250" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ชนิดการจดทะเบียน :</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="registype"
+										style="width: 350px">
+									</select>
+								</div>
+								<div class="col-sm-5"></div>
+								<div class="col-sm-1">
+									<a id="dlt_regis_type_th" href="dlt_regis_type_th.pdf"
+										target="blank" title="เอกสารข้อมูลประเภทรถ">
+										<button id="btDltRegisTypeTh" type="button"
+											class="btn btn-sm btn-danger form-control">
+											<i class="fa fa-file-pdf-o bigger-140"></i>
+										</button>
+									</a>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">จำนวน ที่นั่ง<font>*</font> :
+								</label>
+								<div class="col-sm-1">
+									<input type="text" id="carseat" name="car_seat"
+										class="form-control" style="text-align: left; width: 100px"
+										maxlength="4"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" />
+								</div>
+								<div class="col-sm-3"></div>
+								<div class="col-sm-5"></div>
+								<label class="col-sm-3 col-form-label" for="input-small">(ไม่รวมคนขับ)</label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">จำนวน เพลา<font>*</font> :
+								</label>
+								<div class="col-sm-1">
+									<input type="text" id="truckshaft" name="truck_shaft"
+										class="form-control" style="text-align: left; width: 100px"
+										maxlength="4"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">จำนวน กงล้อ<font>*</font> :
+								</label>
+								<div class="col-sm-1">
+									<input type="text" id="truckwheel" name="truck_wheel"
+										class="form-control" style="text-align: left; width: 100px"
+										maxlength="4"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">จำนวน ยาง<font>*</font> :
+								</label>
+								<div class="col-sm-1">
+									<input type="text" id="trucktyre" name="truck_tyre"
+										class="form-control" style="text-align: left; width: 100px"
+										maxlength="4"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										/>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">dt_install_for_dlt :</label>
+								<div class="col-sm-2">
+									<input value="" id="dtinstalldlt" name="dtinstalldlt"
+										style="width: 150px; background-color: #f7f70582"
+										readonly="true" class="form-control" />
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-5"></div>
+								<div class="col-sm-1">
+									<button type="submit" style="width: 70px" id="clearBtnDateIns"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearBtnDateIns()">
+										<i class="fa fa-times-circle"></i>ล้างวันที่
+									</button>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">วันที่กำหนดให้ออกเอกสาร<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input value="" id="dtprinted" name="dtprinted"
+										style="width: 150px; background-color: #f7f70582"
+										readonly="true" class="form-control" />
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-5"></div>
+								<div class="col-sm-1">
+									<button type="submit" style="width: 70px"
+										id="clearBtnDatePrint"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearBtnDatePrint()">
+										<i class="fa fa-times-circle"></i>ล้างวันที่
+									</button>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">มีการต่อเครื่องอ่านบัตร :</label>
+								<div class="col-sm-2">
+									<form id="myform">
+										<input type="checkbox" id="cardreader" name="card_reader" />
+									</form>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-md-5 col-lg-5 col-form-label"
+									for="input-small" style="text-align: right">รุ่นกล่อง :</label>
+								<div class="col-sm-4 col-md-3 col-lg-2">
+									<select class="form-control" id="model" name="model">
+										<option value="0480000">0480000</option>
+										<option value="0480001">0480001</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+							<div class="form-group row">
+								<div class="col-sm-4 col-md-6 col-lg-8"></div>
+								<div class="col-sm-4 col-md-3 col-lg-2">
+									<button type="submit" id="clearBtn"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearBtn()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-4 col-md-3 col-lg-2">
+									<button type="submit" id="btSubmitSave"
+										class="btn btn-sm btn-success form-control" onclick="update()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em06.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

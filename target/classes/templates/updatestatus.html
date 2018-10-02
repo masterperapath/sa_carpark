@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i> ค้นหาสถานะ </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-success form-control" onclick="search()">
+										<i class="fa fa-dot-circle-o"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-primary form-control" onclick="update()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID:</label>
+								<div class="col-sm-2">
+									<input type="text" id="mid" name="mid"
+										class="form-control form-control-sm" placeholder="MID"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' maxlength="8" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">สถานะ
+									ผู้ใช้:</label>
+								<div class="col-sm-2">
+									<label class="switch switch-text switch-pill switch-success">
+										<input type="checkbox" class="switch-input" id="statususer" />
+										<span class="switch-label" data-on="On" data-off="Off"></span>
+										<span class="switch-handle"></span>
+									</label>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">สถานะ
+									ขนส่ง:</label>
+								<div class="col-sm-2">
+									<label class="switch switch-text switch-pill switch-success">
+										<input type="checkbox" class="switch-input" id="statusdlt" />
+										<span class="switch-label" data-on="On" data-off="Off"></span>
+										<span class="switch-handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/updatestatus.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

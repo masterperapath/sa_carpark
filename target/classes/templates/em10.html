@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em10">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-12">
+							<h4>
+								<strong><i class="icon-eye"></i>
+									จัดการข้อมูลกลุ่มผู้ใช้งาน GPS </strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headerFirst">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong><i class="icon-eye"></i> ค้นหาข้อมูลกลุ่ม </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClearEm10"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearEm10()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSearchEm10"
+										class="btn btn-sm btn-primary form-control"
+										onclick="searchEm10()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btAddEm10"
+										class="btn btn-sm btn-warning form-control"
+										onclick="addEm10()">
+										<i class="fa fa-circle-o"></i> เพิ่ม
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-header" id="headerSecond">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i> ค้นหาข้อมูลกลุ่ม </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btBackEm10"
+										class="btn btn-sm btn-warning form-control"
+										onclick="backEm10()">
+										<i class="fa fa-reply"></i> ย้อนกลับ
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSaveEm10"
+										class="btn btn-sm btn-success form-control"
+										onclick="saveEm10()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+								<div class="col-sm-5">
+									<input type="text" id="groupname" name="groupname"
+										maxlength="50" class="form-control form-control-sm"
+										placeholder="ชื่อกลุ่ม" onkeypress='keyenter(event)' />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">รหัสกลุ่ม:</label>
+								<div class="col-sm-5">
+									<input type="text" id="groupIdSearch" name="groupIdSearch"
+										maxlength="10" class="form-control form-control-sm"
+										placeholder="รหัสกลุ่ม" onkeypress='keyenter(event)'
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card" id="em10CardSearch">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i>ข้อมูลกลุ่ม </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<table id="tableID"
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">รหัสกลุ่ม</th>
+										<th style="text-align: center">ชื่อกลุ่ม</th>
+										<th style="text-align: center">คำอธิบาย</th>
+										<th style="text-align: center" width="120">จัดการ</th>
+									</tr>
+								</thead>
+								<tbody id="table">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card" id="em10CardSave">
+						<div class="card-header" id="headerSaveFirst">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i> เพิ่มกลุ่ม </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-header" id="headerSaveSecond">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i> แก้ไขกลุ่ม </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label" for="input-small"
+									style="text-align: right">ชื่อกลุ่ม<font>*</font> :
+								</label>
+								<div class="col-sm-5">
+									<input type="text" id="GroupnameUP" name="GroupUP"
+										class="form-control form-control-sm" maxlength="50"
+										placeholder="ชื่อกลุ่ม" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-4 col-form-label" for="input-small"
+									style="text-align: right">คำอธิบาย :</label>
+								<div class="col-sm-5">
+									<input type="text" id="CommentUP" name="CommentUP"
+										class="form-control form-control-sm" maxlength="40"
+										placeholder="คำอธิบายกลุ่ม" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em10.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

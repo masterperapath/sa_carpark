@@ -1,0 +1,1 @@
+ALTER SEQUENCE audit.group_id_seq RESTART WITH 4743;

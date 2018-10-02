@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+		<div class="container-fluid" id="em18">
+			<div class="animated fadeIn">
+				<div class="row" style="margin-top: 1%">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-4">
+								<h4>
+									<strong><i class="icon-eye"></i> รายงานสรุปติดตั้งตามช่วงเวลา </strong>
+								</h4>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<div class="row">
+									<div class="col-sm-4 col-md-5 col-lg-6">
+										<strong><i class="icon-eye"></i> พิมพ์สรุปรายงานตามช่วงเวลา </strong>
+									</div>
+									<div class="col-sm-1 col-md-1col-lg-1" id="dlt_DltRegisfn4"></div>
+									<div class="col-sm-1 col-md-1 col-lg-1" id="dlt_DltRegisfn5"></div>
+									<div class="col-sm-4 col-md-3 col-lg-2">
+										<button type="submit" id="btSearchEm18"
+											class="btn btn-sm btn-success form-control"
+											onclick="searchEm18()">
+											<i class="fa fa-search"></i> พิมพ์
+										</button>
+									</div>
+									<div class="col-sm-4 col-md-3 col-lg-2">
+										<button type="submit" id="clearAllEm18"
+											class="btn btn-sm btn-danger form-control"
+											onclick="clearAllEm18()">
+											<i class="fa fa-times-circle"></i> ล้างข้อมูล
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group row">
+											<label class="col-sm-7 col-form-label"
+												style="text-align: right" for="input-small">ตั่งแต่วันที่:</label>
+											<div class="col-sm-5">
+													<input id="startdate" class="form-control  form-control-sm"
+														style="width: 150px; background-color: #f7f70582"
+														readonly="true" /> 
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label"
+												style="text-align: right" for="input-small">ถึงวันที่:</label>
+											<div class="col-sm-5">
+													<input id="enddate" class="form-control  form-control-sm"
+														style="width: 150px; background-color: #f7f70582"
+														readonly="true" /> 
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em18.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

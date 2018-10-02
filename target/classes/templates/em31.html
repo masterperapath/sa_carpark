@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="page :: head">
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<div class="container-fluid" id="em31">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4>
+								<strong>
+									<i class="icon-eye"></i> จัดการเปลี่ยนกล่องใหม่</strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headerFirst">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong>
+										<i class="icon-eye"></i>
+										ค้นหากล่องที่จะเปลี่ยน </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btsearchEm31" class="btn btn-sm btn-primary form-control" onclick="searchEm31()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btclearEm31" class="btn btn-sm btn-danger form-control" onclick="clearEm31()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btswapBoxEm31" class="btn btn-sm btn-warning form-control" onclick="swapBox()">
+										<i class="fa fa-dot-circle-o"></i> สลับกล่อง
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-header" id="headerSecond">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong>
+										<i class="icon-eye"></i>
+										จัดการเปลี่ยนกล่องใหม่ </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btcancelEm31" class="btn btn-sm btn-warning form-control" onclick="backEm31()">
+										<i class="fa fa-dot-circle-o"></i>ย้อนกลับ
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btclearEm31_2" class="btn btn-sm btn-danger form-control" onclick="clearEm31_2()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSaveEm31" class="btn btn-sm btn-success form-control" onclick="saveEm31()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-body" id="bodyFirst">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="mid" name="mid" maxlength="50" class="form-control" placeholder="MID" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+									 onkeypress='keyenter(event)' />
+								</div>
+							</div>
+						</div>
+						<div class="card-body" id="bodySecond">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="mid_lost" name="mid_lost" class="form-control" disabled="disabled" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">เปลี่ยนเป็น :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="mid_store" name="mid_store" class="form-control" disabled="disabled" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">กล่องใหม่ที่จะเอามาแทน :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="mid_new" name="mid_new" maxlength="50" class="form-control" placeholder="MID" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+									 onkeypress='keyenterMID(event);' />
+								</div>
+							</div>
+						</div>
+						<!-- <div class="card-body" id="bodyThird">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="mid" name="mid" maxlength="50" class="form-control" placeholder="MID" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+									 onkeypress='keyenter(event)' />
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card" id="CardSearch">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>
+										<i class="icon-eye"></i> ข้อมูลกล่อง </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<table class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">MID ปัจจุบัน</th>
+										<th style="text-align: center">IMEI ปัจจุบัน</th>
+										<th style="text-align: center">MID เสีย</th>
+										<th style="text-align: center">IMEI เสีย</th>
+										<th style="text-align: center">MID ใหม่</th>
+										<th style="text-align: center">IMEI ใหม่</th>
+										<th style="text-align: center">สลับโดย</th>
+										<th style="text-align: center">วันที่สลับ</th>
+									</tr>
+								</thead>
+								<tbody id="table">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card" id="CardNote">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong>
+										<i class="icon-eye"></i> คำอธิบายกล่อง </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body" id="bodyNote"></div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card" id="swapFirst">
+						<div class="card-header">
+							<strong>
+								<i class="icon-eye"></i> Box1 </strong>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">MID:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxFirstMid" name="boxFirstMid" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" onkeypress='keyenterSwapFirst(event)' onkeydown='keydeleteSwapFirst(event)' />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">IMEI:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxFirstImei" name="boxFirstImei" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxFirstGroupName" name="boxFirstGroupName" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">Car Code:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxFirstCarcode" name="boxFirstCarcode" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">Plat:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxFirstPlat" name="boxFirstPlat" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">MID:</label>
+								<div class="col-sm-6">
+									<input type="text" id="swapMid" name="swapMid" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ข้อความเดิมใน db:</label>
+								<div class="col-sm-6">
+									<label class="col-form-label" id="boxFirstOldNote"></label>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ข้อความใหม่:</label>
+								<div class="col-sm-6">
+									<textarea class="col-form-textarea form-control" id="boxFirstNewNote" name="boxFirstNewNote" rows="9"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-6">
+					<div class="card" id="swapSecond">
+						<div class="card-header">
+							<strong>
+								<i class="icon-eye"></i> Box2 </strong>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">MID:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxSecondMid" name="boxSecondMid" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" onkeypress='keyenterSwapSecond(event)' onkeydown='keydeleteSwapSecond(event)'/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">IMEI:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxSecondImei" name="boxSecondImei" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxSecondGroupName" name="boxSecondGroupName" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">Car Code:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxSecondCarcode" name="boxSecondCarcode" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">Plat:</label>
+								<div class="col-sm-6">
+									<input type="text" id="boxSecondPlat" name="boxSecondPlat" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ข้อความเดิมใน db:</label>
+								<div class="col-sm-6">
+									<label class="col-form-label" id="boxSecondOldNote"></label>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="input-small">ข้อความใหม่:</label>
+								<div class="col-sm-6">
+									<textarea class="col-form-textarea form-control" id="boxSecondNewNote" name="boxSecondNewNote" rows="9"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em31.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+
+</html>

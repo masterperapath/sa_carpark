@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+		<div class="container-fluid" id="em14">
+			<div class="animated fadeIn">
+				<div class="row" style="margin-top: 1%">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-4">
+								<h4>
+									<strong><i class="icon-eye"></i>
+										จัดการข้อมูลสู่กรมการขนส่งทางบก </strong>
+								</h4>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<div class="row">
+									<div class="col-sm-12">
+										<strong><i class="icon-eye"></i>
+											ข้อมูลกรมการขนส่งทางบก </strong>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="form-group row">
+									<div class="col-sm-2">
+										<button type="submit" id="btSubmit"
+											class="btn btn-sm btn-success form-control" onclick="add()">
+											<i class="fa fa-paper-plane-o"></i> ส่งข้อมูล
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row">
+									<div class="col-sm-2">
+										<button type="submit" id="btDelete"
+											class="btn btn-sm btn-danger form-control"
+											onclick="deletedata()">
+											<i class="fa fa-times-circle"></i> ลบข้อมูล
+										</button>
+									</div>
+									<div class="col-sm-3">
+										<input type="text" id="unitid" name="unitid"
+											class="form-control form-control-sm"
+											placeholder="ระบุหมายเลขเครื่อง" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">MID</th>
+										<th style="text-align: center">รหัสเครื่อง</th>
+										<th style="text-align: center">ทะเบียนรถ</th>
+										<th style="text-align: center">ชนิดพาหนะ</th>
+										<th style="text-align: center">หมายเลขคัสซี</th>
+										<th style="text-align: center">เครื่องรูดบัตร</th>
+										<th style="text-align: center">รหัสจังหวัด</th>
+										<th style="text-align: center">รถที่ลงทะเบียน</th>
+									</tr>
+								</thead>
+								<tbody id="tableData">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em14.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

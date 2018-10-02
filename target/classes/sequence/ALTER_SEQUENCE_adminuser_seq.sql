@@ -1,0 +1,1 @@
+ALTER SEQUENCE adminuser_seq RESTART WITH 56;

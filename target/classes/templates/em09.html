@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em09">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4>
+								<strong><i class="icon-eye"></i> เพิ่มข้อมูลกล่อง GPS </strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i>
+										เพิ่มกล่องใหม่เข้าระบบ </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-success form-control" onclick="save()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClear"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearval()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">MID<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="mid" maxlength="10" name="mid"
+										class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="MID" />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">ประเภทกล่อง<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<select class="form-control" id="model">
+										<option>T333</option>
+									</select>
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">IMEI<font>*</font>
+									:
+								</label>
+								<div class="col-sm-2">
+									<input type="text" id="imei" maxlength="19" name="imei"
+										class="form-control form-control-sm"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"
+										onkeypress='keyenter(event)' placeholder="IMEI" />
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSubmit"
+										class="btn btn-sm btn-success form-control" onclick="add()">
+										<i class="fa fa-plus"></i> เพิ่ม
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">MID</th>
+										<th style="text-align: center">ประเภทกล่อง</th>
+										<th style="text-align: center">IMEI</th>
+										<th style="text-align: center; width: 8%;">ลบข้อมูล</th>
+									</tr>
+								</thead>
+								<tbody id="tableId">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em09.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

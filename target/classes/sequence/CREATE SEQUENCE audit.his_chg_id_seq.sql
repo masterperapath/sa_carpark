@@ -1,0 +1,1 @@
+CREATE SEQUENCE audit.his_chg_id_seq START 1;

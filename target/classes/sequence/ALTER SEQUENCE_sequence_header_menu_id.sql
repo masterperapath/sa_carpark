@@ -1,0 +1,1 @@
+ALTER SEQUENCE audit.sequence_header_menu_id RESTART WITH 12;

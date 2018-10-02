@@ -1,0 +1,6 @@
+CREATE SEQUENCE audit.sequence_header_menu_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 999999999
+  START 1
+  CACHE 1;

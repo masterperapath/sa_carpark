@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+		<div class="container-fluid" id="em20">
+			<div class="animated fadeIn">
+				<div class="row" style="margin-top: 1%">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<h4>
+									<strong><i class="fa fa-file-o"></i> รายงานประจำเดือน </strong>
+								</h4>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<div class="row">
+									<div class="col-sm-8 col-md-9 col-lg-10">
+										<strong><i class="icon-eye"></i> ค้นหา </strong>
+									</div>
+									<div class="col-sm-4 col-md-3 col-lg-2">
+										<button type="submit" id="btSubmit"	class="btn btn-sm btn-primary form-control"	onclick="search()"><i class="fa fa-search"></i> ค้นหา
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="form-group row">
+									<label class="col-sm-2 col-md-2 col-lg-1 col-form-label" for="input-small">ชื่อกลุ่ม:</label>
+									<div class="col-sm-6 col-md-6 col-lg-4">
+										<select class="form-control" id="groupname"></select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<table
+									class="table table-responsive-sm table-bordered table-striped table-sm">
+									<thead>
+										<tr>
+											<th style="text-align: center">No.</th>
+											<th style="text-align: center">ไฟล์รายงาน</th>
+											<th style="text-align: center">ดาวน์โหลดรายงาน</th>
+										</tr>
+									</thead>
+									<tbody id="tableId">
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em20.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>

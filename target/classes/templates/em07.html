@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container-fluid" id="em07">
+		<div class="animated fadeIn">
+			<div class="row" style="margin-top: 1%">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4>
+								<strong><i class="icon-eye"></i>
+									จัดการข้อมูลบัญชีผู้ใช้</strong>
+							</h4>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headerFirst">
+							<div class="row">
+								<div class="col-sm-6">
+									<strong><i class="icon-eye"></i> ค้นหาบัญชีผู้ใช้ </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btClearEm07"
+										class="btn btn-sm btn-danger form-control"
+										onclick="clearEm07()">
+										<i class="fa fa-times-circle"></i> ล้างข้อมูล
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSearchEm07"
+										class="btn btn-sm btn-primary form-control"
+										onclick="searchEm07()">
+										<i class="fa fa-search"></i> ค้นหา
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btAddEm07"
+										class="btn btn-sm btn-warning form-control"
+										onclick="addEm07()">
+										<i class="fa fa-circle-o"></i> เพิ่ม
+									</button>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header" id="headerSecond">
+							<div class="row">
+								<div class="col-sm-8">
+									<strong><i class="icon-eye"></i> ค้นหาบัญชีผู้ใช้ </strong>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btBackEm07"
+										class="btn btn-sm btn-warning form-control"
+										onclick="backEm07()">
+										<i class="fa fa-reply"></i>ย้อนกลับ
+									</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="submit" id="btSaveEm07"
+										class="btn btn-sm btn-success form-control"
+										onclick="saveEm07()">
+										<i class="fa fa-dot-circle-o"></i> บันทึก
+									</button>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-1 col-form-label" for="input-small">บัญชีผู้ใช้
+									:</label>
+								<div class="col-sm-5">
+									<input type="text" id="usernameSearch" name="usernameSearch"
+										maxlength="50" class="form-control" placeholder="บัญชีผู้ใช้"
+										onkeypress='keyenter(event)' />
+								</div>
+								<label class="col-sm-1 col-form-label" for="input-small">แผนก
+									:</label>
+								<div class="col-sm-3">
+									<select class="form-control" id="userroleSearch"
+										name="userroleSearch">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card" id="em07CardSearch">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i>ข้อมูลบัญชีผู้ใช้ </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<table
+								class="table table-responsive-sm table-bordered table-striped table-sm">
+								<thead>
+									<tr>
+										<th style="text-align: center">No.</th>
+										<th style="text-align: center">บัญชีผู้ใช้</th>
+										<th style="text-align: center">ชื่อผู้ใช้</th>
+										<th style="text-align: center">แผนก</th>
+										<th style="text-align: center" width="120">จัดการ</th>
+										<th style="text-align: center" width="120">ลบบัญชีผู้ใช้</th>
+									</tr>
+								</thead>
+								<tbody id="table">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card" id="em07CardSave">
+						<div class="card-header" id="em07CardSaveA">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i> แก้ไขบัญชีผู้ใช้ </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-header" id="em07CardSaveB">
+							<div class="row">
+								<div class="col-sm-12">
+									<strong><i class="icon-eye"></i> เพิ่มบัญชีผู้ใช้ </strong>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ชื่อ-นามสกุล<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="realname" name="realname"
+										class="form-control form-control-sm" maxlength="100"
+										placeholder="ชื่อจริง" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ชื่อเล่น<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="displayname" name="displayname"
+										class="form-control form-control-sm" maxlength="20"
+										placeholder="ชื่อเล่น" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ชื่อบัญชี<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="username" name="username"
+										class="form-control form-control-sm" maxlength="50"
+										oninput="this.value = this.value.replace(/[^0-9a-zA-Z-_]/g, '').replace(/(\..*)\./g, '$1')"
+										placeholder="ชื่อบัญชี" />
+								</div>
+								<label class="col-sm-2 col-form-label" for="input-small"
+									style="text-align: left"><font>*ห้ามน้อยกว่า 6
+										ตัว </font></label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">รหัสผ่าน<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="password" id="password" name="password"
+										class="form-control form-control-sm" maxlength="70"
+										oninput="this.value = this.value.replace(/[^0-9a-zA-Z]/g, '').replace(/(\..*)\./g, '$1')"
+										placeholder="รหัสผ่าน" />
+								</div>
+								<label class="col-sm-2 col-form-label" for="input-small"
+									style="text-align: left"><font>*ห้ามน้อยกว่า 6
+										ตัว </font></label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ยืนยันรหัสผ่าน<font>*</font>
+									:
+								</label>
+								<div class="col-sm-3">
+									<input type="password" id="confirmpassword"
+										name="confirmpassword" class="form-control form-control-sm"
+										maxlength="70"
+										oninput="this.value = this.value.replace(/[^0-9a-zA-Z]/g, '').replace(/(\..*)\./g, '$1')"
+										placeholder="ยืนยันรหัสผ่าน" />
+								</div>
+								<label class="col-sm-2 col-form-label" for="input-small"
+									style="text-align: left"><font>*กรอกให้ตรงกับรหัสผ่าน</font></label>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">แผนก<font>*</font> :
+								</label>
+								<div class="col-sm-2">
+									<select class="form-control" id="userrole" name="userrole">
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">Email<font>*</font> :
+								</label>
+								<div class="col-sm-3">
+									<input type="text" id="email" name="email"
+										class="form-control form-control-sm" maxlength="50"
+										oninput="this.value = this.value.replace(/[^0-9a-zA-Z-_.@]/g, '').replace(/(\..*)\./g, '$1')"
+										placeholder="Email" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-5 col-form-label" for="input-small"
+									style="text-align: right">ส่งอีเมลล์สรุป :</label>
+								<div class="col-sm-2">
+									<label class="switch switch-text switch-pill switch-success">
+										<input type="checkbox" class="switch-input" id="sendemail" />
+										<span class="switch-label" data-on="ส่ง" data-off="ไม่ส่ง"></span>
+										<span class="switch-handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript"> var contextRoot = [[@{/}]] ; </script>
+<script type="text/javascript" th:src="@{/js/em07.js}" />
+<script type="text/javascript" th:src="@{/js/spinners.js}" />
+</html>
